@@ -1,28 +1,29 @@
-A work in progress of a partner project C: 
+** This is a work in progress **
 
-<img width="1714" alt="image" src="https://github.com/spicytunafishyy/productivity-site/assets/114300168/6a363952-23c9-4019-9950-5c6e11ab720b">
+<img width="1728" alt="Screen Shot 2023-09-30 at 11 34 59 AM" src="https://github.com/tuhina-das/function-of-time/assets/114300168/4e285622-f6b3-4ef8-920e-0bd6d55dddd5">
+<img width="1728" alt="Screen Shot 2023-09-30 at 11 35 42 AM" src="https://github.com/tuhina-das/function-of-time/assets/114300168/e6f5c420-e561-4b48-841b-952ded5b708c">
 
 
 ## Instructions:
 Click on 'Download ZIP' to obtain the project in ZIP format. Open the project with IDE.
 
-<img width="558" alt="image" src="https://github.com/spicytunafishyy/productivity-site/assets/114300168/75761ffc-bc5b-42de-b235-a2ed57c93b28">
+<img width="520" alt="Screen Shot 2023-09-30 at 11 36 34 AM" src="https://github.com/tuhina-das/function-of-time/assets/114300168/7e509cc7-e99f-4b43-a18f-322368929a4b">
 
 ## Project contains the following:
+- Base HTML, CSS and JS files under "graphing-site" directory
+- React version ("graphing-site-react") of what I currently have integrated into React.
+  
 - 'fonts': folder containing font files used in the site
-- 'icons': folder containing icon files used in the floating action bar (FAB)
-- 'FAB-test.html': practice file I used to create the FAB
-- 'index.html': the big cool file you open to get the project running :D
+- 'icons': folder containing icon files used in the floating action bar (FAB) and navbar
+- 'used-pages': Folder containing base HTML, CSS and JS for site
   - This contains elements including the overall layout of the site and elements/scripting for the graph and FAB
-- 'style.css': CSS file to style the entire site
-  - Note: this will be further refined in the future
-- 'tempLogo.png': a PNG for acting as a placeholder logo when I refine the navbar in the near future
+- 'wip-pages': Folder containing files that are unfinished, but will be updated in the future
 
 ## Features:
 - An animated graph displaying the user's availability over a given period of time
 - An animated FAB that will be used to add, remove, and edit user tasks
-- A (currently unrefined) navbar
-- A footer with links :P
+- "Add Events" menu that allows the user to add any number of events to particular days on the graph
+- Footer with (some) links
 
 ---
 
