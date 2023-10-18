@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Sunny';
+    src: url('../fonts/sunny.otf') format('opentype');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+
+body {
+    width: 100%;
+    height:100%;
+    margin: auto;
+    position: relative;
+    background-color: rgb(249, 255, 251);
+}
+
+/* -----------------NAVBAR CSS-------------------------- */
+.navBar {
+    background-color: #bdeac2;
+    padding-bottom: 3rem;
+    border-bottom: solid black 5px;
+    align-items: center;
+}
+
+.navOption {
+    font-family: 'Sunny';
+    font-size: 30px;
+    font-weight: 400;
+    color: #394944;
+    float: left;
+    align-items: center;
+    vertical-align: middle;
+}
+
+
+.navOption:hover {
+    cursor: pointer;
+    #o1text,
+    #o2text,
+    #o3text {
+        background-color: black;
+        color: white;
+    }
+}
+
+#navItemsContainer {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+#navOption1 {
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+#navOption2 {
+    float: right;
+    margin-right: 20px;
+}
+
+#navOption2 img {
+    border: solid black 2px;
+    border-radius: 100%;
+    margin-top: 5px;
+    vertical-align: middle;
+}
+
+#navOption3 {
+    float: left;
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+#o1text {
+    margin-left: 5px;
+    float: right;
+    margin-top: 15px;
+    ;
+}
+
+#o2text {
+    margin-left: 5px;
+    float: right;
+    margin-top: 17px;
+}
+
+#o3text {
+    margin-left: 5px;
+    margin-top: 12px;
+    float: right;
+}
+
+/* --------------------WEBPAGE CSS------------------------------------ */
+
+.webPage {
+    margin: auto;
+    padding-top: 50px;
+    width: 100%;
+    height: 1300px;
+    display: inline-block;
+    padding-bottom: 2rem;
+    overflow: auto;
+}
+
+/* -----------------FOOTER CSS-------------------------- */
+
+footer {
+    background-color: #bdeac2;
+    font-family: 'Sunny';
+    font-size: small;
+    color: #394944;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.footerHead {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.footerLink {
+    text-decoration: none;
+    color: #394944;
+    font-size: 25px;
+
+}
+
+.footerLink:hover {
+    text-decoration: underline;
+}
+
+footer {
+    position: absolute;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    border-top: solid #394944 5px;
+}
+
+/* -----------------CHART/CANVAS CSS-------------------------- */
+
+#container {
+    padding: 20px;
+    height: auto;
+    width: 100%;
+    align-self: center;
+}
+
+#myChart {
+    position: absolute center;
+    height: 500px;
+}
+
+#functionTitle {
+    text-align: center;
+    font-family: 'Sunny';
+    font-size: 50px;
+    letter-spacing: 3px;
+}
+
+
+/* -----------------FAB CSS-------------------------- */
+
+.fab {
+    position: fixed;
+    top: 125px;
+    left: 25px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: #bdeac2;
+    box-shadow: 1px 2px 4px grey;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.fab:hover img {
+    transform: rotate(360deg);
+    transition: all .5s;
+}
+
+.options {
+    height: 30px;
+    width: 30px;
+}
+
+.fab:hover {
+    cursor: pointer;
+}
+
+.box {
+    position: fixed;
+    top: 130px;
+    left: 40px;
+    height: 0px;
+    transition-delay: .3s;
+    width: 80px;
+    transition: 0.4s cubic-bezier(.445, .05, .55, .95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item {
+    overflow: hidden;
+    border-radius: 50%;
+    transition: 0.2s ease in;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 3px grey;
+
+}
+
+.item1 {
+    transition-delay: .2s;
+    background-color: #bdeac2;
+
+}
+
+.item2 {
+    transition-delay: .3s;
+    background-color: #bdeac2;
+    margin-top: 10px;
+    margin-bottom: 50px;
+
+}
+
+.item:hover {
+    cursor: pointer;
+}
+
+.item:hover img {
+    transform: rotate(360deg);
+    transition: all .2s;
+}
+
+.box-active {
+    height: 290px;
+}
+
+/* -----------------SUBMIT BUTTON CSS (POP-UP)-------------------------- */
+
+#subCont {
+    justify-content: center;
+    #submit,#submitR {
+        background-color: #bdeac2;
+        border: 5px solid #394944;
+        cursor: pointer;
+        width: 200px;
+        height: 100px;
+        border-radius: 15%;
+        font-size: 40px;
+        font-family: 'Sunny';
+        letter-spacing: 2px;
+        color: #394944;
+        margin-top: 30px;
+    }
+}
