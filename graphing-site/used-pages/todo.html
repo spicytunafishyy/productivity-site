@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function of Time</title>
+    <link href="Everything.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icons/clock.png">
+    <style>
+        @font-face {
+            font-family: 'Sunny';
+            src: url('../fonts/sunny.otf') format('opentype');
+            font-weight: lighter;
+            font-style: normal;
+        }
+
+        #listCont {
+            width: fit-content;
+            display: flex;
+            flex-direction: row;
+            /* border: solid 5px red; */
+            margin: auto;
+            justify-content: center;
+        }
+
+        #dayH {
+            border:solid rgb(0, 41, 116) 5px;
+            width:fit-content;
+            font-family: 'Sunny';
+            letter-spacing: 1px;
+            font-size:50px;
+            margin-left:70px;
+            margin-right:70px;
+            text-align: center;
+            background-color: #bdeac2;
+            color:#394944;
+            padding:5px;
+            border-radius: 30px;
+        }
+        #listC{
+            border: 5px solid rgb(0, 41, 116);
+            padding:10px;
+            height:fit-content;
+            margin: 10px;
+            background-color: rgb(175, 203, 255);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #hAndB{
+            /* border:solid black 5px; */
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .timeButton{
+            border:solid rgb(0, 41, 116) 5px;
+            width:50px;
+            font-family: 'Sunny';
+            letter-spacing: 1px;
+            font-size:50px;
+            margin-left:70px;
+            margin-right:70px;
+            /* text-decoration: underline; */
+            text-align: center;
+            background-color: #bdeac2;
+            color:#394944;
+            border-radius: 30px;
+        }
+        
+
+        ul li{
+            /* border:solid blue 5px; */
+            text-align: left;
+            list-style: none;
+            font-family: 'Sunny';
+            letter-spacing: 1px;
+            font-size:30px;
+            padding:12px 8px 10px 50px;
+            position:relative;
+        }
+
+        ul li::before{
+            content:'';
+            position:absolute;
+            height: 28px;
+            width: 28px;
+            border: solid black 3px;
+            border-radius: 50%;
+            background-color: white;
+            background-size: cover;
+            background-position: center;
+            top: 12px;
+            left: 8px;
+        }
+
+        ul li.checked{
+            color:#555;
+            text-decoration: line-through;
+        }
+
+        ul li.checked::before{
+            content:'';
+            position:absolute;
+            height: 28px;
+            width: 28px;
+            border: solid black 3px;
+            border-radius: 50%;
+            background-image: url(../icons/fab/navbar/check-mark.png);
+            background-size: cover;
+            background-position: center;
+            top: 12px;
+            left: 8px;
+        }
+
+        ul li span{
+            position:absolute;
+            right:0;
+            top:5px;
+            width:40px;
+            height:40px;
+            font-size:22px;
+            color: #555;
+            line-height:40px;
+            text-align: center;
+        }
+
+        ul li span:hover{
+            background-color: #bdeac2;
+            border-radius: 50%;
+            border: solid rgb(0, 41, 116) 3px;
+            cursor: pointer;
+        }
+
+        /* #inputCont{
+
+        } */
+
+        #inputBox{
+            padding:10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius:30px;
+            height:50px;
+            width:600px;
+            font-family: 'Sunny';
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        #submit{
+            border:solid black 3px;
+            width:50px;
+            height:50px;
+            font-family: 'Sunny';
+            letter-spacing: 1px;
+            font-size:30px;
+            text-align: center;
+            background-color: #bdeac2;
+            color:#394944;
+            border-radius: 30px;
+        }
+
+        #funOrNot{
+            border:solid black 3px;
+            width:100px;
+            height:50px;
+            font-family: 'Sunny';
+            letter-spacing: 1px;
+            font-size:30px;
+            text-align: center;
+            background-color: #bdeac2;
+            color:#394944;
+            border-radius: 30px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- CONTAINER FOR NAVBAR -->
+    <div class="navBar">
+        <div id="navItemsContainer">
+            <span class="navOption" id="navOption1">
+                <img width="50px" src="../icons/fab/navbar/home1.png">
+                <a class="navOption" id="o1text" href="index.html">Home</a>
+            </span>
+
+            <span class="navOption" id="navOption3" title="To-Do List">
+                <img style="margin-top:5px;" width="50px" src="../icons/fab/navbar/to-do-list.png">
+                <a class="navOption" id="o3text" href="todo.html">To-Do List</a>
+            </span>
+
+            <span class="navOption" id="navOption3" title="Weekly Breakdown">
+                <img style="margin-top:5px;" width="50px" src="../icons/fab/navbar/event-management.png">
+                <a class="navOption" id="o3text" href="balance.html">Weekly Balance</a>
+            </span>
+
+            <span class="navOption" id="navOption4" title="Resources">
+                <img style="margin-top:13px;" width="40px" src="../icons/fab/navbar/pencil.png">
+                <a class="navOption" style="margin-top:15px;" id="o3text" href="resources.html">Resources</a>
+            </span>
+
+            <span class="navOption" id="navOption2">
+                <img width="50px"
+                    style="border: solid black 2px; border-radius: 100%; margin-top: 5px; vertical-align: middle;"
+                    src="../icons/fab/navbar/check-mark.png">
+                <a class="navOption" id="o2text" href="profile.html">My Profile</a>
+            </span>
+        </div>
+    </div>
+    <!-- CONTAINER FOR WEBPAGE -->
+    <div class="webPage" id="graphPage">
+        <h1 id="functionTitle">My To-Do List</h1>
+
+        <div id="listCont">
+            <div id="dayHeader">
+                <span id="hAndB">
+                    <button class="timeButton" id="backward"> < </button>
+                    <h1 id="dayH">Sunday</h1>
+                    <button class="timeButton" id="forward"> > </button>
+                </span>               
+                <div id="listC">
+                    <span id="inputCont">
+                        <input id="inputBox" type="text" placeholder="Add your task here"/>
+                        <button onclick=addTask() id="submit">+</button>
+                        <button onclick=changeTxt() class="work" id="funOrNot">Work</button>
+                    </span>
+                    
+                    <ul id="list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTAINER FOR FOOTER -->
+    <div class="foot">
+        <footer>
+            <span class="footerHead">
+                <h1>About Us</h1>
+                <a class="footerLink" href="devNotes.html">Developer Notes</a>
+                <a class="footerLink">Terms of Service</a>
+                <a class="footerLink">Privacy Policy</a>
+            </span>
+            <span class="footerHead">
+                <h1>Contact Us</h1>
+                <a class="footerLink">Click here!</a>
+            </span>
+            <span class="footerHead">
+                <h1>Social Media</h1>
+                <a class="footerLink" href="https://www.linkedin.com/in/tuhina-das-722217255/" target="_blank">LinkedIn
+                    - Tuhina</a>
+                <a class="footerLink" href="https://www.linkedin.com/in/juliet-glenn-4879b6280/"
+                    target="_blank">LinkedIn - Juliet</a>
+            </span>
+        </footer>
+    </div>
+
+</body>
+
+<script src="./listEdit.js"></script>
+
+</html>

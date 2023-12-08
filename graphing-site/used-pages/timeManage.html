@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function of Time</title>
+    <link href="Everything.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icons/clock.png">
+    <style>
+        /* -----------------CSS TO STYLE "ADD EVENT" POPUP---------------------- */
+        .popup {
+            z-index: 10;
+            width: 75%;
+            height: 50%;
+            background-color: aliceblue;
+            padding: 20px;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            border-radius: 10%;
+            border: solid rgb(171, 215, 253) 5px;
+            text-align: center;
+            visibility: hidden;
+            align-items: center;
+        }
+
+        .popup h1 {
+            font-family: 'Sunny';
+            letter-spacing: 2px;
+            font-size: 50px;
+            color: rgb(101, 172, 234);
+        }
+
+        .quantity-counter {
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+
+            .value {
+                max-width: 100px;
+                max-height: 20px;
+                text-align: center;
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 20px;
+                font-family: 'Sunny';
+                font-size: 25px;
+
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+        }
+
+        .increment,
+        .decrement {
+            box-shadow: 1px 1px 3px grey;
+            background-color: #bdeac2;
+            border: 1px solid black;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 5%;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 100fr);
+            overflow: hidden;
+        }
+
+        .popupTxt {
+            font-family: 'Sunny';
+            font-size: 30px;
+            letter-spacing: 1px;
+            color: rgb(101, 172, 234);
+        }
+
+        .popup-active {
+            visibility: visible;
+        }
+
+        /* -----------------CSS TO STYLE DEV NOTES---------------------- */
+
+        #devNotes {
+            font-family: 'Sunny';
+            font-size: 30px;
+            margin-left: 40px;
+        }
+
+        #description {
+            padding: 20px;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Sunny';
+            font-size: 30px;
+            letter-spacing: 1px;
+        }
+
+        #reset {
+            border: solid black 3px;
+            width: 300px;
+            height: 50px;
+            font-family: 'Sunny';
+            letter-spacing: 1px;
+            font-size: 30px;
+            text-align: center;
+            background-color: #bdeac2;
+            color: #394944;
+            border-radius: 30px;
+        }
+
+        #descriptionText {
+            font-family: 'Sunny';
+            font-size: 30px;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: center;
+            letter-spacing: 1px;
+            text-decoration: underline;
+        }
+
+        #descriptionText2 {
+            font-family: 'Sunny';
+            font-size: 30px;
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #394944;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #5b736c;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- CONTAINER FOR NAVBAR -->
+    <div class="navBar">
+        <div id="navItemsContainer">
+            <span class="navOption" id="navOption1">
+                <img width="50px" src="../icons/fab/navbar/home1.png">
+                <a class="navOption" id="o1text" href="index.html">Home</a>
+            </span>
+
+            <span class="navOption" id="navOption3" title="To-Do List">
+                <img style="margin-top:5px;" width="50px" src="../icons/fab/navbar/to-do-list.png">
+                <a class="navOption" id="o3text" href="todo.html">To-Do List</a>
+            </span>
+
+            <span class="navOption" id="navOption3" title="Weekly Breakdown">
+                <img style="margin-top:5px;" width="50px" src="../icons/fab/navbar/event-management.png">
+                <a class="navOption" id="o3text" href="balance.html">Weekly Balance</a>
+            </span>
+
+            <span class="navOption" id="navOption4" title="Resources">
+                <img style="margin-top:13px;" width="40px" src="../icons/fab/navbar/pencil.png">
+                <a class="navOption" style="margin-top:15px;" id="o3text" href="resources.html">Resources</a>
+            </span>
+
+            <span class="navOption" id="navOption2">
+                <img width="50px"
+                    style="border: solid black 2px; border-radius: 100%; margin-top: 5px; vertical-align: middle;"
+                    src="../icons/fab/navbar/check-mark.png">
+                <a class="navOption" id="o2text" href="profile.html">My Profile</a>
+            </span>
+
+        </div>
+    </div>
+    <!-- CONTAINER FOR WEBPAGE -->
+    <div class="webPage" id="graphPage">
+        <h1 id="functionTitle">Struggling with time management?</h1>
+        <p id="descriptionText">We got you! Here are some resources for managing your time wisely:</p>
+        <div id="descriptionText2">
+            <ul id="list">
+                <li>
+                    <a target="_blank"
+                        href="https://students.dartmouth.edu/academic-skills/learning-resources/time-management-tips">-
+                        Dartmouth: Time Management</a>
+                </li>
+                <li>
+                    <a target="_blank"
+                        href="https://www.boisestate.edu/coen-mbe/2021/04/20/5-ways-to-stop-procrastinating/">- Boise
+                        State: Procrastination</a>
+                </li>
+                <li>
+                    <a target="_blank"
+                        href="https://www.healthdirect.gov.au/motivation-how-to-get-started-and-staying-motivated">-
+                        HealthDirect: Motivation</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.usa.edu/blog/time-management-techniques/">- University of St.
+                        Augustine: Time Management Techniques</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://summer.harvard.edu/blog/8-time-management-tips-for-students/">- Harvard: Time Management Tips</a>
+                </li>
+
+                <li>
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4864984/">- National Library of Medicine: Understanding Motivation</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://mcgraw.princeton.edu/undergraduates/resources/resource-library/understanding-and-overcoming-procrastination">- Princeton: Overcoming Procrastination</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.coursera.org/articles/time-management">- Coursera: Time Management Tips</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://hbr.org/2020/01/time-management-is-about-more-than-life-hacks">- Harvard Business Review: Time Management</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://undergradcollege.utexas.edu/slc/study/time-goals">- University of Texas at Austin: Time and Goals</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://academicsupport.jhu.edu/resources/study-aids/overcoming-procrastination/">- Johns Hopkins University: Overcoming Procrastination</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.depts.ttu.edu/research/integrity/RCR/sm-archive/procrastinator-tips.php">- Texas Tech: Tips From a Recovering Procrastinator</a>
+                </li>
+
+                <li>
+                    <a target="_blank" href="https://www.einsteinmed.edu/education/student-affairs/academic-support-counseling/medical-school-challenges/study-burnout.aspx">- EinsteinMed: Dealing With Burnout</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.apa.org/monitor/2017/09/boosting-productivity">- American Psychological Association: Boosting Productivity</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.ox.ac.uk/news/2019-10-24-happy-workers-are-13-more-productive">- Effects of Happiness on Productivity</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4763375/">- National Library of Medicine: Strategies to Increase Productivity</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.additudemag.com/twice-exceptional-adhd-signs/">- Identifying and Nurturing Gifted Individuals with ADHD</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://wellbeing.gmu.edu/thriving-together-series-why-well-being-increases-productivity/">- George Mason University: Well-Being and Productivity</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/stress/managing-stress-and-building-resilience/">- Mind.org: Managing Stress and Building Resilience</a>
+                </li>
+
+
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- CONTAINER FOR FOOTER -->
+    <div class="foot">
+        <footer>
+            <span class="footerHead">
+                <h1>About Us</h1>
+                <a class="footerLink" href="devNotes.html">Developer Notes</a>
+                <a class="footerLink">Terms of Service</a>
+                <a class="footerLink">Privacy Policy</a>
+            </span>
+            <span class="footerHead">
+                <h1>Contact Us</h1>
+                <a class="footerLink">Click here!</a>
+            </span>
+            <span class="footerHead">
+                <h1>Social Media</h1>
+                <a class="footerLink" href="https://www.linkedin.com/in/tuhina-das-722217255/" target="_blank">LinkedIn
+                    - Tuhina</a>
+                <a class="footerLink" href="https://www.linkedin.com/in/juliet-glenn-4879b6280/"
+                    target="_blank">LinkedIn - Juliet</a>
+            </span>
+        </footer>
+    </div>
+
+</body>
+
+</html>

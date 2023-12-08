@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function of Time (mockup)</title>
+    <link href="Everything.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../icons/clock.png">
+    <style>
+        /* -----------------CSS TO STYLE "ADD EVENT" POPUP---------------------- */
+        .popup {
+            z-index: 10;
+            width: 75%;
+            height: 50%;
+            background-color: aliceblue;
+            padding: 20px;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            border-radius: 10%;
+            border: solid rgb(171, 215, 253) 5px;
+            text-align: center;
+            visibility: hidden;
+            align-items: center;
+        }
+
+        .popup h1 {
+            font-family: 'Sunny';
+            letter-spacing: 2px;
+            font-size: 50px;
+            color: rgb(101, 172, 234);
+        }
+
+        .quantity-counter {
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+
+            .value {
+                max-width: 100px;
+                max-height: 20px;
+                text-align: center;
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 20px;
+                font-family: 'Sunny';
+                font-size: 25px;
+
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+        }
+
+        .increment,
+        .decrement {
+            box-shadow: 1px 1px 3px grey;
+            background-color: #bdeac2;
+            border: 1px solid black;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 5%;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 100fr);
+            overflow: hidden;
+        }
+
+        .popupTxt {
+            font-family: 'Sunny';
+            font-size: 30px;
+            letter-spacing: 1px;
+            color: rgb(101, 172, 234);
+        }
+
+        .popup-active {
+            visibility: visible;
+        }
+
+        /* -----------------CSS TO STYLE DEV NOTES---------------------- */
+
+        #devNotes {
+            font-family: 'Sunny';
+            font-size: 30px;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- CONTAINER FOR NAVBAR -->
+    <div class="navBar">
+        <div id="navItemsContainer">
+            <span class="navOption" id="navOption1">
+                <img width="50px" src="../icons/fab/navbar/home1.png">
+                <a class="navOption" id="o1text" href="index.html">Home</a>
+            </span>
+
+            <span class="navOption" id="navOption3" title="To-Do List">
+                <img style="margin-top:5px;" width="50px" src="../icons/fab/navbar/to-do-list.png">
+                <a class="navOption" id="o3text" href="todo.html">To-Do List</a>
+            </span>
+
+            <span class="navOption" id="navOption3" title="Weekly Breakdown">
+                <img style="margin-top:5px;" width="50px" src="../icons/fab/navbar/event-management.png">
+                <a class="navOption" id="o3text" href="balance.html">Weekly Balance</a>
+            </span>
+
+            <span class="navOption" id="navOption4" title="Resources">
+                <img style="margin-top:13px;" width="40px" src="../icons/fab/navbar/pencil.png">
+                <a class="navOption" style="margin-top:15px;" id="o3text" href="resources.html">Resources</a>
+            </span>
+
+            <span class="navOption" id="navOption2">
+                <img width="50px"
+                    style="border: solid black 2px; border-radius: 100%; margin-top: 5px; vertical-align: middle;"
+                    src="../icons/fab/navbar/check-mark.png">
+                <a class="navOption" id="o2text" href="profile.html">My Profile</a>
+            </span>
+        </div>
+    </div>
+    <!-- CONTAINER FOR WEBPAGE -->
+    <div class="webPage" id="graphPage">
+
+        <!-- CONTAINER FOR "ADD EVENT" POP-UP -->
+        <div class="popup" id="addPop">
+            <h1>Add An Event</h1>
+            <div class="wrapper">
+                <h2 class="popupTxt">Sunday</h2>
+                <div class="quantity-counter">
+                    <button id="cd1" class="decrement">-</button>
+                    <input id="cv1" class="value" type="number" value="0">
+                    <button id="ci1" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Monday</h2>
+                <div class="quantity-counter">
+                    <button id="cd2" class="decrement">-</button>
+                    <input id="cv2" class="value" type="number" value="0">
+                    <button id="ci2" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Tuesday</h2>
+                <div class="quantity-counter">
+                    <button id="cd3" class="decrement">-</button>
+                    <input id="cv3" class="value" type="number" value="0">
+                    <button id="ci3" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Wednesday</h2>
+                <div class="quantity-counter">
+                    <button id="cd4" class="decrement">-</button>
+                    <input id="cv4" class="value" type="number" value="0">
+                    <button id="ci4" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Thursday</h2>
+                <div class="quantity-counter">
+                    <button id="cd5" class="decrement">-</button>
+                    <input id="cv5" class="value" type="number" value="0">
+                    <button id="ci5" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Friday</h2>
+                <div class="quantity-counter">
+                    <button id="cd6" class="decrement">-</button>
+                    <input id="cv6" class="value" type="number" value="0">
+                    <button id="ci6" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Saturday</h2>
+                <div class="quantity-counter">
+                    <button id="cd7" class="decrement">-</button>
+                    <input id="cv7" class="value" type="number" value="0">
+                    <button id="ci7" class="increment">+</button>
+                </div>
+
+            </div>
+            <div id="subCont">
+                <button id="submit">Add Events</button>
+            </div>
+        </div>
+
+        <!-- CONTAINER FOR "REMOVE EVENT" POP-UP -->
+        <div class="popup" id="remPop">
+            <h1>Remove An Event</h1>
+            <div class="wrapper">
+                <h2 class="popupTxt">Sunday</h2>
+                <div class="quantity-counter">
+                    <button id="CD1" class="decrement">-</button>
+                    <input id="CV1" class="value" type="number" value="0">
+                    <button id="CI1" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Monday</h2>
+                <div class="quantity-counter">
+                    <button id="CD2" class="decrement">-</button>
+                    <input id="CV2" class="value" type="number" value="0">
+                    <button id="CI2" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Tuesday</h2>
+                <div class="quantity-counter">
+                    <button id="CD3" class="decrement">-</button>
+                    <input id="CV3" class="value" type="number" value="0">
+                    <button id="CI3" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Wednesday</h2>
+                <div class="quantity-counter">
+                    <button id="CD4" class="decrement">-</button>
+                    <input id="CV4" class="value" type="number" value="0">
+                    <button id="CI4" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Thursday</h2>
+                <div class="quantity-counter">
+                    <button id="CD5" class="decrement">-</button>
+                    <input id="CV5" class="value" type="number" value="0">
+                    <button id="CI5" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Friday</h2>
+                <div class="quantity-counter">
+                    <button id="CD6" class="decrement">-</button>
+                    <input id="CV6" class="value" type="number" value="0">
+                    <button id="CI6" class="increment">+</button>
+                </div>
+
+                <h2 class="popupTxt">Saturday</h2>
+                <div class="quantity-counter">
+                    <button id="CD7" class="decrement">-</button>
+                    <input id="CV7" class="value" type="number" value="0">
+                    <button id="CI7" class="increment">+</button>
+                </div>
+
+            </div>
+            <div id="subCont">
+                <button id="submitR">Remove Events</button>
+            </div>
+        </div>
+
+        <!-- SCRIPT TO INCREMENT/DECREMENT COUNTERS FOR "ADD/REMOVE EVENT" POP-UP -->
+        <script src="graph.js"></script>
+
+        <!-- FLOATING OPTIONS TO OPEN ADD/REMOVE EVENTS POPUPS-->
+        <div class="fab">
+            <img class="options" title="Edit Events" src="../icons/fab/fab/edit-icon.png">
+        </div>
+
+        <div class="box">
+            <a class="item item1" title="Add Event" id="obj1">
+                <img class="options" src="../icons/fab/fab/plus-icon.png">
+            </a>
+            <a href="" class="item item2" title="Remove Event" id="obj2">
+                <img class="options" src="../icons/fab/fab/minus-icon.png">
+            </a>
+        </div>
+
+        <!-- GRAPH TITLE -->
+        <h1 id="functionTitle">My Daily Availability</h1>
+
+            <!-- CONTAINER FOR GRAPH -->
+            <div id="container">
+                <!HTML canvas to draw out the chart>
+                    <canvas id="myChart"></canvas>
+            </div>
+
+            <!--Source CDN for Chart.js library-->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <!-- CREATE/STYLE CHART -->
+            <script id="chartScript" src="chart.js"></script>
+
+            <!-- SCRIPT FOR SUBMITTING ADDED EVENTS ("ADD EVENT" POPUP) -->
+            <!-- * Note: This script is redundant and will be fixed next -->
+            <script id="submitScript">
+                const s = document.querySelector("#submit");
+                const r = document.querySelector("#submitR");
+
+
+                s.addEventListener('click', () => {
+                
+                    console.log("clicked")
+                    var temp = chart.data.datasets[0].data; //save array
+                    //modify array
+                    temp[0] += count1;
+                    temp[1] += count2;
+                    temp[2] += count3;
+                    temp[3] += count4;
+                    temp[4] += count5;
+                    temp[5] += count6;
+                    temp[6] += count7;
+                    //set new dataset
+                    chart.data.datasets[0].data = temp;
+                    //update chart
+                    chart.update();
+                    //save data
+                    saveGraph(temp);
+                    //close popup
+                    const pop = document.querySelector('#addPop');
+                    pop.classList.toggle('popup-active');
+
+                    //reset counters
+                    count1 = 0;
+                    count2 = 0;
+                    count3 = 0;
+                    count4 = 0;
+                    count5 = 0;
+                    count6 = 0;
+                    count7 = 0;
+
+                    //reset all increments
+                    counterValue1.setAttribute("value", 0);
+                    counterValue2.setAttribute("value", 0);
+                    counterValue3.setAttribute("value", 0);
+                    counterValue4.setAttribute("value", 0);
+                    counterValue5.setAttribute("value", 0);
+                    counterValue6.setAttribute("value", 0);
+                    counterValue7.setAttribute("value", 0);
+                });
+
+                r.addEventListener('click', () => {
+                
+                console.log("clicked")
+                var temp = chart.data.datasets[0].data; //save array
+                //modify array
+                temp[0] -= C1;
+                temp[1] -= C2;
+                temp[2] -= C3;
+                temp[3] -= C4;
+                temp[4] -= C5;
+                temp[5] -= C6;
+                temp[6] -= C7;
+                //set new dataset
+                chart.data.datasets[0].data = temp;
+                //update chart
+                chart.update();
+                //save data
+                saveGraph(temp);
+                //close popup
+                const pop1 = document.querySelector('#remPop');
+                pop1.classList.toggle('popup-active');
+
+                //reset counters
+                C1 = 0;
+                C2 = 0;
+                C3 = 0;
+                C4 = 0;
+                C5 = 0;
+                C6 = 0;
+                C7 = 0;
+
+                //reset all increments
+                CV1.setAttribute("value", 0);
+                CV2.setAttribute("value", 0);
+                CV3.setAttribute("value", 0);
+                CV4.setAttribute("value", 0);
+                CV5.setAttribute("value", 0);
+                CV6.setAttribute("value", 0);
+                CV7.setAttribute("value", 0);
+            });
+
+            // save chart data
+            function saveGraph(temp){
+                    localStorage.setItem("graphData", temp);
+                    console.log("saved");
+                    console.log(temp); //for check
+                }
+
+                function showGraph(){
+                    return localStorage.getItem("data");
+                }
+            </script>
+
+            <!-- SCRIPT FOR OPENING FAB MENU -->
+            <script>
+                document.querySelector('.fab').addEventListener('click',
+                    function (e) {
+                        document.querySelector('.box').classList.toggle('box-active');
+                    }
+                );
+            </script>
+
+            <!-- SCRIPT TO TOGGLE "ADD/REMOVE EVENT" POP-UP -->
+            <script>
+                document.querySelector('#obj1').addEventListener('click',
+                    function (e) {
+                        // make the popup for adding visible
+                        const pop = document.querySelector('#addPop');
+                        pop.classList.toggle('popup-active');
+                    }
+                );
+                
+                document.querySelector('#obj2').addEventListener('click',
+                function(e){
+                    //make popup for removing visible
+                    const pop = document.querySelector('#remPop');
+                    pop.classList.toggle('popup-active');
+                    event.preventDefault();
+                });
+            </script>
+
+            <!-- CONTAINER FOR DEV NOTES
+            <div id="devNotes">
+                <h1>Dev Notes:</h1>
+                <ul>
+                    <li>Some code is redundant, particularly when tracking added events (ie. counter values). My
+                        next goal is to fix this.</li>
+                    <li>"Remove events" (-) is not implemented yet. This will be implemented once above bullet is
+                        resolved.</li>
+                    <li>NavBar links do not work yet, as pages need to be implemented.</li>
+                    <li>After cleaning this code up, will integrate fully into React.</li>
+                </ul>
+            </div> -->
+    </div>
+
+    <!-- CONTAINER FOR FOOTER -->
+    <div class="foot">
+        <footer>
+            <span class="footerHead">
+                <h1>About Us</h1>
+                <a class="footerLink" href="devNotes.html">Developer Notes</a>
+                <a class="footerLink">Terms of Service</a>
+                <a class="footerLink">Privacy Policy</a>
+            </span>
+            <span class="footerHead">
+                <h1>Contact Us</h1>
+                <a class="footerLink">Click here!</a>
+            </span>
+            <span class="footerHead">
+                <h1>Social Media</h1>
+                <a class="footerLink" href="https://www.linkedin.com/in/tuhina-das-722217255/" target="_blank">LinkedIn
+                    - Tuhina</a>
+                <a class="footerLink" href="https://www.linkedin.com/in/juliet-glenn-4879b6280/"
+                    target="_blank">LinkedIn - Juliet</a>
+            </span>
+        </footer>
+    </div>
+
+</body>
+
+</html>
